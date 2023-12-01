@@ -1,0 +1,11 @@
+version: "3"
+services:
+  techcode-homepage:
+    image: techcode-homepage:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    container_name: techcode-homepage
+    ports:
+      - "3000:3000"
