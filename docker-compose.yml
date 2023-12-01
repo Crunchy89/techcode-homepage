@@ -7,5 +7,18 @@ services:
       dockerfile: Dockerfile
     restart: always
     container_name: techcode-homepage
+    labels:
+      - traefik.http.routers.techcode-homepage.rule=Host(`techcode.cloud`)
+      - traefik.http.routers.techcode-homepage.tls=true
+      - traefik.http.routers.techcode-homepage.tls.certresolver=lets-encrypt
+      - traefik.port=80
+    networks:
+      - internal
+      - web
     ports:
       - "3000:3000"
+networks:
+  web:
+    external: true
+  internal:
+    external: false
